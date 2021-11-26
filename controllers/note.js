@@ -1,10 +1,9 @@
 const notesRouter = require('express').Router();
 const Note = require('../models/note');
 
-notesRouter.get('/', (request, response) => {
-  Note.find({}).then((notes) => {
-    response.json(notes);
-  });
+notesRouter.get('/', async (request, response) => {
+  const notes = await Note.find({});
+  response.json(notes);
 });
 
 notesRouter.get('/:id', (request, response, next) => {
@@ -19,14 +18,14 @@ notesRouter.get('/:id', (request, response, next) => {
     .catch((error) => next(error));
 });
 
-notesRouter.post('/', (request, response, next) => {
+notesRouter.post('/', async (request, response, next) => {
   const body = request.body;
 
-  if (body.content === undefined) {
+  /* if (body.content === undefined) {
     return response.status(400).json({
       error: 'content missing',
     });
-  }
+  } */ // redundant???????
 
   const note = new Note({
     content: body.content,
@@ -34,11 +33,12 @@ notesRouter.post('/', (request, response, next) => {
     date: new Date(),
   });
 
-  note
-    .save()
-    .then((savedNote) => savedNote.toJSON()) //check this methods
-    .then((savedAndFormattedNote) => response.json(savedAndFormattedNote))
-    .catch((error) => next(error));
+  try {
+    const savedNote = await note.save();
+    response.json(savedNote);
+  } catch (exception) {
+    next(exception);
+  }
 });
 
 notesRouter.put('/:id', (request, response, next) => {

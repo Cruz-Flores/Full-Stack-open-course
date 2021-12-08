@@ -5,8 +5,9 @@ const app = express();
 const cors = require('cors');
 const notesRouter = require('./controllers/note.js');
 const usersRouter = require('./controllers/users.js');
+const logginRouter = require('./controllers/login.js');
 const middleware = require('./utils/middleware.js');
-const logger = require('./utils/logger');
+const logger = require('./utils/logger.js');
 const mongoose = require('mongoose');
 
 logger.info('connecting to ', config.MONGODB_URI);

@@ -1,8 +1,8 @@
 POST  http://localhost:3001/api/notes
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkNydXppdG8iLCJpZCI6IjYxYWZkN2E1NGQwYTMwYWFmYmJlOTFjNSIsImlhdCI6MTYzODkzMjUxMn0.VchcPHd66j9Yk_ad4IQ4WMpj_WZR1w53gdOTvnGLxA4
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkNydXppdG8iLCJpZCI6IjYxYWZkN2E1NGQwYTMwYWFmYmJlOTFjNSIsImlhdCI6MTYzOTAwNzE5Nn0.SZHPMuQLKl8lAaHP0udTQlZwvbSyK6BJUOUkxnlMQOM
 
 {
-    "content": "fire test",
-    "important": true
+    "content": "Cruzito",
+    "important": false
 }

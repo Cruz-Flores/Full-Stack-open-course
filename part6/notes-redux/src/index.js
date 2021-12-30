@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 import App from './App.js';
 
@@ -13,14 +14,11 @@ const reducer = combineReducers({
   filter: filterReducer,
 });
 
-const store = createStore(reducer);
-
-console.log(store.getState());
+const store = createStore(reducer, composeWithDevTools());
 
 ReactDOM.render(
-  // <Provider store={store}>
-  //   <App />
-  // </Provider>
-  <div />,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('root')
 );

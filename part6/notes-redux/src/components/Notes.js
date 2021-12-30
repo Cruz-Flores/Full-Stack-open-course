@@ -12,7 +12,8 @@ const Note = ({ note, handleClick }) => {
 
 const Notes = () => {
   const dispatch = useDispatch();
-  const notes = useSelector((state) => state);
+  const notes = useSelector((state) => state); //como sabe cual es el estado?
+  console.log(notes);
 
   return (
     <ul>

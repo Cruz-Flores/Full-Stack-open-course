@@ -28,6 +28,10 @@ try {
     value2,
     `Multiplied ${value1} and ${value2}, the result is:`
   );
-} catch (e: any) {
-  console.log('Error, something bad happened, message: ', e.message);
+} catch (error: unknown) {
+  let errorMessage = 'Something bad happened.';
+  if (error instanceof Error) {
+    errorMessage += ' Error: ' + error.message;
+  }
+  console.log(errorMessage);
 }
